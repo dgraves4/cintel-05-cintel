@@ -4,6 +4,8 @@ import random
 from datetime import datetime
 from collections import deque
 import pandas as pd
+import plotly.express as px
+from shinywidgets import render_plotly
 from faicons import icon_svg
 
 # Set a constant UPDATE INTERVAL for all live data
@@ -44,7 +46,7 @@ def reactive_calc_combined():
     return deque_snapshot, df, latest_dictionary_entry
 
 # Define the page options: title and fillable width
-ui.page_opts(title="PyShiny Express: Live Data (Fancy)", fillable=True)
+ui.page_opts(title="PyShiny Express: Live Arctic Data", fillable=True)
 
 # Define the sidebar with relevant information
 with ui.sidebar(open="open"):
@@ -68,16 +70,22 @@ with ui.sidebar(open="open"):
 
     ui.a(
         "GitHub App",
-        href="",
+        href="https://dgraves4.github.io/cintel-05-cintel/",
         target="_blank",
     )
 
     ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
 
+    ui.a(
+        "PyShiny Express",
+        href="https://shiny.posit.co/blog/posts/shiny-express/",
+        target="_blank",
+    )
+
 with ui.layout_columns():
     with ui.value_box(
         showcase=icon_svg("sun"),
-        theme="bg-gradient-blue-purple",
+        theme="bg-gradient-blue-yellow",
     ):
 
         "Current Temperature"
