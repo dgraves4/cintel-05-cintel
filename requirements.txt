@@ -6,3 +6,4 @@ scipy
 shiny
 shinylive
 shinywidgets
+ipyleaflet
