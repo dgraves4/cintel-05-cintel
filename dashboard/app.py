@@ -5,8 +5,9 @@ from datetime import datetime
 from collections import deque
 import pandas as pd
 import plotly.express as px
-from shinywidgets import render_plotly
+from shinywidgets import render_plotly, render_widget
 from scipy import stats
+from ipyleaflet import Map
 from faicons import icon_svg
 
 # Set a constant UPDATE INTERVAL for all live data
@@ -80,6 +81,12 @@ with ui.sidebar(open="open"):
         href="https://shiny.posit.co/blog/posts/shiny-express/",
         target="_blank",
     )
+
+ui.h2("Map of Antarctica")
+
+@render_widget  
+def map():
+    return Map(center=(-90, 0), zoom=3)  # Centered at the South Pole, zoomed out
 
 with ui.layout_columns():
     with ui.value_box(
