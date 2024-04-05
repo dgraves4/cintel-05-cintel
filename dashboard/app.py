@@ -92,6 +92,7 @@ with ui.layout_columns():
     with ui.value_box(
         showcase=icon_svg("sun"),
         theme="bg-gradient-blue-yellow",
+        style="background-color: #8FBC8F;",  # Change temperature box color to green
     ):
         "Current Temperature"
 
@@ -103,8 +104,8 @@ with ui.layout_columns():
 
         "warmer than usual"
 
-with ui.card(full_screen=True):
-    ui.card_header("Current Date and Time")
+with ui.card(full_screen=True, style="background-color: #f2f2f2;"):
+    ui.card_header("Current Date and Time", style="background-color: #4169E1; color: #FFFFFF;")
 
     @render.text
     def display_time():
@@ -112,10 +113,9 @@ with ui.card(full_screen=True):
         deque_snapshot, df, latest_dictionary_entry = reactive_calc_combined()
         return f"{latest_dictionary_entry['timestamp']}"
 
-
 # with ui.card(full_screen=True, min_height="40%"):
-with ui.card(full_screen=True):
-    ui.card_header("Most Recent Readings")
+with ui.card(full_screen=True, style="background-color: #f2f2f2;"):
+    ui.card_header("Most Recent Readings", style="background-color: #4169E1; color: #FFFFFF;")
 
     @render.data_frame
     def display_df():
@@ -124,9 +124,8 @@ with ui.card(full_screen=True):
         pd.set_option("display.width", None)  # Use maximum width
         return render.DataGrid(df, width="100%")
 
-
-with ui.card():
-    ui.card_header("Chart with Current Trend")
+with ui.card(style="background-color: #f2f2f2;"):
+    ui.card_header("Chart with Current Trend", style="background-color: #4169E1; color: #FFFFFF;")
 
     @render_plotly
     def display_plot():
@@ -148,7 +147,7 @@ with ui.card():
                 y="temp",
                 title="Temperature Readings with Regression Line",
                 labels={"temp": "Temperature (°C)", "timestamp": "Time"},
-                color_discrete_sequence=["blue"],
+                color_discrete_sequence=["red"],  # Change scatter plot points color to red
             )
 
             # Linear regression - we need to get a list of the
@@ -172,6 +171,7 @@ with ui.card():
                 y=df["best_fit_line"],
                 mode="lines",
                 name="Regression Line",
+                line=dict(color="purple"),  # Change regression line color to purple
             )
 
             # Update layout as needed to customize further
