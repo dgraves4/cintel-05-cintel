@@ -108,6 +108,6 @@ In this project, exploration was achieved by adding an ipyleaflet map to the das
 
 ## Sources 
 
-All project 5 inspiration and base code can be found at: https://github.com/denisecase/cintel-05-cintel
-Shiny for Python: https://shiny.posit.co/py/
-Favicon generator: https://favicon.io/
+- All project 5 inspiration and base code can be found at: https://github.com/denisecase/cintel-05-cintel
+- Shiny for Python: https://shiny.posit.co/py/
+- Favicon generator: https://favicon.io/
